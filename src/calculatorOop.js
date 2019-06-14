@@ -33,13 +33,3 @@ class Calculator {
    }
 }
 
-let calculate = new Calculator();
-
-console.log(calculate.plus(5, 6));
-console.log(calculate.lastValue());
-console.log(calculate.times(calculate.lastValue(), 3));
-
-console.log(calculate.times(5, 6));
-console.log(calculate.lastValue());
-console.log(calculate.plus(calculate.lastValue(), 3));
-
