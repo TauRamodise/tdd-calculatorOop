@@ -1,4 +1,4 @@
-describe('Calculator', function () {
+describe('Calculator.add()', function () {
     let calculate;
     beforeEach(function () {
         calculate = new Calculator()
@@ -42,7 +42,24 @@ describe('Calculator', function () {
         expect(calculate.slot_set(1)).toBe(16);
         expect(calculate.slot_get(1)).toBe(16);
         expect(calculate.plus(calculate.slot_get(1), 4)).toBe(20);
+       
     })
+    it('should be able to get last set value and add to the last calculated value', function () {
+        expect(calculate.plus(5, 5, 4)).toBe(14);
+        expect(calculate.lastValue()).toBe(14);
+        expect(calculate.plus(calculate.lastValue(), 2)).toBe(16);
+        expect(calculate.slot_set(1)).toBe(16);
+        expect(calculate.slot_get(1)).toBe(16);
+        expect(calculate.plus(calculate.slot_get(1), 4)).toBe(20);
+        expect(calculate.plus(calculate.slot_get(1), calculate.lastValue())).toBe(36);
+    })
+});
+
+    describe('Calculator.times()', function () {
+        let calculate;
+        beforeEach(function () {
+            calculate = new Calculator()
+        });
 
     it('should multiply two or more numbers', function () {
         expect(calculate.times(5, 5, 4)).toBe(100);
@@ -81,5 +98,16 @@ describe('Calculator', function () {
         expect(calculate.slot_set(1)).toBe(200);
         expect(calculate.slot_get(1)).toBe(200);
         expect(calculate.times(calculate.slot_get(1), 4)).toBe(800);
+
+    })
+    it('should be able to get last set value and multiply to last calculated value ', function () {
+        expect(calculate.times(5, 5, 4)).toBe(100);
+        expect(calculate.lastValue()).toBe(100);
+        expect(calculate.times(calculate.lastValue(), 2)).toBe(200);
+        expect(calculate.slot_set(1)).toBe(200);
+        expect(calculate.slot_get(1)).toBe(200);
+        expect(calculate.times(calculate.slot_get(1), 4)).toBe(800);
+        expect(calculate.times(calculate.slot_get(1), calculate.lastValue())).toBe(160000);
+
     })
 })
