@@ -1,9 +1,9 @@
 
-class Calculator {
+ class Calculator {
     constructor() {
         this.slot = [];
     }
-    plus() {
+    add() {
         let sum = 0;
 
         for (let i = 0; i < arguments.length; i++) {
@@ -12,23 +12,24 @@ class Calculator {
         }
         return sum;
     }
-    times() {
-        let sum = 1;
+    multiply() {
+        let result = 1;
 
         for (let i = 0; i < arguments.length; i++) {
-            sum *= arguments[i];
-            this.lastVal = sum;
+            result *= arguments[i];
+            this.lastVal = result;
         }
-        return sum;￼
+        return result;
     }
     lastValue() {
         return this.lastVal;
     }
-    slot_set(i) {
+    set_slot(i) {
         this.slot.push(this.lastVal);
         return this.slot[i - 1]
     }
-    slot_get(i) {
+    get_slot(i) {
         return this.slot[i - 1]
     }
 }
+
